@@ -1,0 +1,28 @@
+import pygal
+
+from dice import Die
+
+d1 = Die()
+d2 = Die()
+d3 = Die()
+
+results = []
+for roll_num in range(1000):
+    result = d1.roll() + d2.roll() + d3.roll()
+    results.append(result)
+
+frequencies = []
+max_result = d1.num_sides + d2.num_sides + d3.num_sides
+for value in range(3, max_result + 1):
+    frequency = results.count(value)
+    frequencies.append(frequency)
+
+hist = pygal.Bar()
+
+hist.title = 'Result of rolling Three D6 1000times'
+hist.x_title = 'Result'
+hist.y_title = 'Frequency of Result'
+hist.x_labels = list(range(3, max_result + 1))
+
+hist.add('3D6', frequencies)
+hist.render_to_file('Three D6.svg')
