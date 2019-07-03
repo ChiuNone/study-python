@@ -1,2 +1,2 @@
 # study-python
-Python Crash Course Part 2 Project 2
+Python Crash Course Part 2 Project
